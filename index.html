@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aiden — an anomaly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d10;
+    --bg-raised: #12161a;
+    --line: #24292e;
+    --text: #e9e6de;
+    --text-dim: #7c8790;
+    --ember: #c1502e;
+    --ember-bright: #e2683d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { background: var(--bg); }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* nav */
+  nav {
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav .handle {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  nav a.igbtn {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 3px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  nav a.igbtn:hover,
+  nav a.igbtn:focus-visible {
+    border-color: var(--ember);
+    color: var(--ember-bright);
+  }
+
+  /* hero */
+  .hero {
+    padding: 90px 0 70px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(3.2rem, 13vw, 5.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero h1 .glitch {
+    position: relative;
+    color: var(--ember-bright);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .hero .line {
+    margin-top: 28px;
+    max-width: 46ch;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  /* manifesto */
+  .manifesto {
+    padding: 10px 0 64px;
+    border-top: 1px solid var(--line);
+  }
+
+  .manifesto p {
+    max-width: 58ch;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    padding-top: 48px;
+  }
+
+  .manifesto p + p {
+    margin-top: 22px;
+  }
+
+  .manifesto em {
+    font-style: italic;
+    color: var(--ember-bright);
+  }
+
+  /* pillars */
+  .pillars {
+    padding: 0 0 70px;
+  }
+
+  .pillars .heading {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+
+  .pillars ul {
+    list-style: none;
+  }
+
+  .pillars li {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .pillars li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pillars .word {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    min-width: 110px;
+  }
+
+  .pillars .desc {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    padding-top: 3px;
+  }
+
+  /* find */
+  .find {
+    padding: 0 0 90px;
+  }
+
+  .find .heading {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+
+  .find a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .find a:hover,
+  .find a:focus-visible {
+    color: var(--ember-bright);
+    border-color: var(--ember);
+  }
+
+  .find .arrow {
+    color: var(--ember);
+    font-family: 'Fraunces', serif;
+  }
+
+  /* footer */
+  footer {
+    padding: 26px 0 40px;
+    border-top: 1px solid var(--line);
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 60px 0 50px; }
+    .manifesto p { font-size: 1.15rem; }
+    .pillars li { flex-direction: column; gap: 4px; }
+    .pillars .word { min-width: unset; }
+    footer { flex-direction: column; gap: 6px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .glitch { animation: settle 1.4s steps(1, end) 1; }
+  }
+
+  @keyframes settle {
+    0%   { opacity: 0.2; transform: translateX(-2px); }
+    8%   { opacity: 1;   transform: translateX(1px); }
+    16%  { opacity: 0.3; transform: translateX(-1px); }
+    24%  { opacity: 1;   transform: translateX(0); }
+    32%  { opacity: 0.15;}
+    40%  { opacity: 1;   transform: translateX(2px); }
+    100% { opacity: 1;   transform: translateX(0); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <nav>
+      <span class="handle">@aidenxthinks</span>
+      <a class="igbtn" href="https://instagram.com/aidenxthinks" target="_blank" rel="noopener">instagram</a>
+    </nav>
+
+    <section class="hero">
+      <h1>
+        <span>an</span>
+        <span class="glitch">anomaly</span>
+      </h1>
+      <p class="line">i share my thoughts because unspoken ones just rot.</p>
+    </section>
+
+    <section class="manifesto">
+      <p>most feeds are built to agree with you. this one isn't trying to.</p>
+      <p>i think out loud about the things people usually keep <em>quiet</em> — science, the mind, and the opinions that don't survive small talk.</p>
+    </section>
+
+    <section class="pillars">
+      <div class="heading">what i circle back to</div>
+      <ul>
+        <li>
+          <span class="word">science</span>
+          <span class="desc">how things actually work, minus the noise</span>
+        </li>
+        <li>
+          <span class="word">mindset</span>
+          <span class="desc">the internal work nobody posts about</span>
+        </li>
+        <li>
+          <span class="word">opinions</span>
+          <span class="desc">said plainly, argued honestly</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="find">
+      <div class="heading">find me</div>
+      <a href="https://instagram.com/aidenxthinks" target="_blank" rel="noopener">
+        <span class="arrow">→</span> reels &amp; posts on instagram
+      </a>
+    </section>
+
+    <footer>
+      <span>aiden</span>
+      <span>patna, in</span>
+    </footer>
+  </div>
+
+</body>
+</html>
